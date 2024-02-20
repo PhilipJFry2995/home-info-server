@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Google Charts Example - Spring Boot</title>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div align="center" style="width: max-width; padding: 100px;">
+    <h2>222 electricity timeline</h2>
+    <div id="timeline_div"></div>
+</div>
+<script th:inline="javascript">
+        var real_data = /*[[${chartData}]]*/'noValue';
+        $(document).ready(function() {
+            google.charts.load('current', {
+                packages : [ 'corechart', 'bar', 'timeline' ]
+            });
+            google.charts.setOnLoadCallback(drawTimelineChart);
+        });
+        function drawTimelineChart() {
+            var chart = new google.visualization.Timeline(document.getElementById('timeline_div'));
+            var dataTable = new google.visualization.DataTable();
+            dataTable.addColumn({ type: 'string', id: 'Day' });
+            dataTable.addColumn({ type: 'string', id: 'Time' });
+            dataTable.addColumn({ type: 'date', id: 'Start' });
+            dataTable.addColumn({ type: 'date', id: 'End' });
+
+            Object.keys(real_data).forEach(function(key) {
+                Object.keys(real_data[key]).forEach(function(periodKey) {
+                    dataTable.addRow([ key, '', new Date(periodKey),  new Date(real_data[key][periodKey]) ]);
+                });
+            });
+            var paddingHeight = 50;
+            var rowHeight = dataTable.getNumberOfRows() * 41;
+            var chartHeight = rowHeight + paddingHeight;
+
+            var options = {
+              height: chartHeight,
+              timeline: { colorByRowLabel: true }
+            };
+
+            chart.draw(dataTable, options);
+          }
+</script>
+</body>
+</html>

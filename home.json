@@ -1,0 +1,41 @@
+[ {
+  "key" : "morningOpen",
+  "name" : "Открыть все шторы утром",
+  "value" : false
+}, {
+  "key" : "dinnerClose",
+  "name" : "Закрыть шторы в гостинной до обеда",
+  "value" : false
+}, {
+  "key" : "eveningClose",
+  "name" : "Закрыть все шторы вечером",
+  "value" : false
+}, {
+  "key" : "notifyEveryHalfHour",
+  "name" : "Электричество каждые 30 мин",
+  "value" : false
+}, {
+  "key" : "notifyBeforeBlackZone",
+  "name" : "Электричество перед черной зоной",
+  "value" : false
+}, {
+  "key" : "boostBathroomFloor",
+  "name" : "Теплый пол на макс. температуру",
+  "value" : true
+}, {
+  "key" : "autoWaterPump",
+  "name" : "Автоматический насос рециркуляции",
+  "value" : true
+}, {
+  "key" : "closeBrightBlinds",
+  "name" : "Закрыть шторы по освещенности",
+  "value" : false
+}, {
+  "key" : "logElectricityOn",
+  "name" : "Логирование электричества",
+  "value" : false
+}, {
+  "key" : "triggerIknowbetterGame",
+  "name" : "Запрашивать I Know Better!",
+  "value" : false
+} ]
